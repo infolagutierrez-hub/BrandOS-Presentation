@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Brand OS — Course Presentation</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-lagutierrez.png">
+<link rel="apple-touch-icon" href="favicon-lagutierrez.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AI BRAND OS — course presentation · LaGutierrez identity
+   Backgrounds: Rojo Pasión #8C2936 · White #FFFFFF ·
+                Sombra Oscura #000000 · Beige Costero #F9EED9
+   TEXT is always white, red, or black — opacity carries hierarchy.
+   Type: Libre Caslon Text · key words in italics
+   ============================================================ */
+:root{
+  --rojo:#8C2936; --blanco:#FFFFFF; --sombra:#000000; --beige:#F9EED9;
+  --line:#EAD5C6; --line-strong:#D8B3AA;
+  --serif:'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--beige);color:var(--sombra);font-family:var(--serif);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+em{font-style:italic}
+img{max-width:100%}
+
+/* ---------- Progress bar + index marker ---------- */
+.prog{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:60}
+.prog > i{display:block;height:100%;width:0;background:var(--rojo);transition:width .15s linear}
+.marker{position:fixed;top:18px;right:20px;z-index:60;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sombra);mix-blend-mode:difference;opacity:0;transition:opacity .4s}
+.marker.on{opacity:.85;color:#fff}
+
+/* ---------- Sections ---------- */
+.s{padding:clamp(96px,16vh,200px) 20px}
+.s--beige{background:var(--beige)}
+.s--white{background:var(--blanco)}
+.s--red{background:var(--rojo)}
+.s--ink{background:var(--sombra)}
+.wrap{max-width:1040px;margin:0 auto}
+
+/* text-color utility classes — white / red / black ONLY */
+.t-w{color:var(--blanco)}
+.t-r{color:var(--rojo)}
+.t-b{color:var(--sombra)}
+.s--red .on-red-body{color:rgba(255,255,255,.82)}
+.s--ink .on-ink-body{color:rgba(255,255,255,.72)}
+.s--beige .on-light-body,.s--white .on-light-body{color:rgba(0,0,0,.6)}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo)}
+.s--red .eyebrow,.s--ink .eyebrow{color:var(--blanco)}
+.num{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
+.num b{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo)}
+.s--red .num b,.s--ink .num b{color:var(--blanco)}
+.num i{flex:1;height:1px;background:var(--line-strong);font-style:normal}
+.s--red .num i{background:rgba(255,255,255,.35)}
+.s--ink .num i{background:rgba(255,255,255,.25)}
+.s--white .num i{background:var(--line)}
+.num-seal{height:18px;width:auto;flex:none;align-self:center;display:block}
+.s--red .num-seal,.s--ink .num-seal{filter:brightness(0) invert(1)}
+
+h2{font-weight:400;font-size:clamp(28px,4.9vw,59px);line-height:1;letter-spacing:-.02em;color:var(--sombra)}
+.s--red h2,.s--ink h2{color:var(--blanco)}
+h2 em{color:var(--rojo)}
+.s--red h2 em{color:var(--blanco);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.s--ink h2 em{color:var(--rojo)}
+.sub{margin-top:20px;font-size:clamp(14px,1.8vw,17px);font-style:italic;line-height:1.35;color:var(--rojo);max-width:30ch}
+.s--red .sub,.s--ink .sub{color:var(--blanco)}
+
+.lead{font-size:clamp(15px,1.8vw,19px);line-height:1.4;max-width:34ch;color:var(--sombra)}
+.s--red .lead,.s--ink .lead{color:var(--blanco)}
+
+/* ---------- Editorial row: italic label left ---------- */
+.rows{display:grid;gap:32px;margin-top:60px}
+.row{display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:baseline}
+.row > em{font-size:14px;color:var(--rojo);text-align:right;line-height:1.3}
+.s--red .row > em,.s--ink .row > em{color:var(--blanco)}
+.row p{font-size:clamp(15px,1.6vw,17px);line-height:1.3;color:var(--sombra)}
+.s--red .row p,.s--ink .row p{color:var(--blanco)}
+
+/* ---------- Quote ---------- */
+.quote{margin-top:60px;padding-left:24px;border-left:2px solid var(--rojo);max-width:min(100%,640px)}
+.s--red .quote,.s--ink .quote{border-left-color:var(--blanco)}
+.quote p{font-size:clamp(18px,3vw,31px);line-height:1.12;letter-spacing:-.01em;color:var(--sombra)}
+.s--red .quote p,.s--ink .quote p{color:var(--blanco)}
+.quote p em{color:var(--rojo)}
+.s--red .quote p em{color:var(--blanco);text-decoration:underline;text-underline-offset:5px}
+.s--ink .quote p em{color:var(--rojo)}
+
+.split{margin-top:60px;font-size:clamp(20px,3.6vw,39px);line-height:1.08;letter-spacing:-.02em;color:var(--sombra)}
+.s--red .split,.s--ink .split{color:var(--blanco)}
+.split span{display:block}
+.split span + span{margin-left:12%;font-style:italic;color:var(--rojo)}
+.s--red .split span + span{color:var(--blanco);text-decoration:underline;text-underline-offset:5px}
+.s--ink .split span + span{color:var(--rojo)}
+
+/* ---------- Cover ---------- */
+.cover{background:var(--rojo);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:34px 20px 40px}
+@supports (min-height:100dvh){.cover{min-height:100dvh}}
+.cover-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blanco)}
+.cover-mid{max-width:1040px;width:100%;margin:0 auto;padding:60px 0}
+.cover h1{font-weight:400;font-size:clamp(43px,10.7vw,138px);line-height:.92;letter-spacing:-.03em;color:var(--blanco);width:fit-content;max-width:100%}
+.cover h1 em{color:var(--blanco);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:10px}
+.cover-sub{margin-top:22px;font-size:clamp(15px,2vw,21px);font-style:italic;line-height:1.3;color:var(--blanco);max-width:24ch}
+.cover-bot{max-width:1040px;width:100%;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.cover-by{font-size:11px;line-height:1.5;color:var(--blanco)}
+.cover-by b{display:block;font-weight:400;font-size:15px;color:var(--blanco)}
+.logo{display:block;width:clamp(140px,18vw,210px);height:auto}
+.cover .logo{filter:brightness(0) invert(1)}
+
+/* ---------- Portrait row ---------- */
+.who{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;margin-top:48px}
+.portrait{width:100%;aspect-ratio:4/5;border-radius:2px;overflow:hidden;border:1px solid var(--line-strong);background:var(--blanco)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.who-txt p{font-size:14px;line-height:1.5;color:var(--sombra)}
+.who-txt p + p{margin-top:10px}
+@media (max-width:640px){.who{grid-template-columns:120px 1fr;gap:22px}}
+
+/* ---------- 00: connect — LinkedIn / Instagram + QR ---------- */
+.connect{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px}
+.connect-item{display:flex;align-items:center;gap:14px}
+.connect-qr{width:84px;height:84px;flex:none;border:1px solid var(--line-strong);border-radius:4px;padding:6px;background:var(--blanco);display:flex;align-items:center;justify-content:center}
+.connect-qr img,.connect-qr canvas,.connect-qr table{display:block;width:100%!important;height:100%!important}
+.connect-txt b{display:block;font-weight:400;font-size:13px;color:var(--sombra);margin-bottom:3px}
+.connect-txt a{font-size:12px;font-style:italic;color:var(--rojo);text-decoration:none}
+.connect-txt a:hover{text-decoration:underline}
+@media (max-width:640px){.connect{gap:18px 24px}.connect-qr{width:72px;height:72px}}
+
+/* ---------- Diagram: hierarchy tree ---------- */
+.diagram{margin:72px auto 0;max-width:900px}
+.dg-cap{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blanco);opacity:.6;text-align:center;margin-top:22px}
+.s--beige .dg-cap,.s--white .dg-cap{color:var(--sombra);opacity:.5}
+.lvl{display:grid;gap:12px;justify-items:center}
+.lvl--2{grid-template-columns:repeat(2,1fr)}
+.lvl--3{grid-template-columns:repeat(3,1fr)}
+.node{text-align:center;padding:0 6px;max-width:100%}
+.node b{display:block;font-weight:400;font-size:clamp(12px,1.6vw,16px);letter-spacing:.04em;text-transform:uppercase;color:var(--blanco);line-height:1.15}
+.s--beige .node b,.s--white .node b{color:var(--sombra)}
+.node span{display:block;margin-top:5px;font-size:11px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.3}
+.s--beige .node span,.s--white .node span{color:rgba(0,0,0,.5)}
+.node--key b{text-decoration:underline;text-underline-offset:5px}
+.tagline{display:inline-block;font-style:normal;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--blanco);border-radius:999px;padding:4px 11px}
+.node .tagline{color:var(--blanco)}
+
+.stem{height:26px;position:relative}
+.stem::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.4)}
+.fork{height:40px;position:relative}
+.fork::before{content:'';position:absolute;left:50%;top:0;height:20px;width:1px;background:rgba(255,255,255,.4)}
+.fork::after{content:'';position:absolute;top:20px;height:20px;border-top:1px solid rgba(255,255,255,.4);border-left:1px solid rgba(255,255,255,.4);border-right:1px solid rgba(255,255,255,.4)}
+.fork--2::after{left:25%;right:25%}
+.fork--3::after{left:16.6667%;right:16.6667%}
+.merge{height:40px;position:relative}
+.merge::before{content:'';position:absolute;top:20px;left:50%;height:20px;width:1px;background:rgba(255,255,255,.4)}
+.merge::after{content:'';position:absolute;top:0;height:20px;border-bottom:1px solid rgba(255,255,255,.4);border-left:1px solid rgba(255,255,255,.4);border-right:1px solid rgba(255,255,255,.4)}
+.merge--2::after{left:25%;right:25%}
+
+@media (max-width:640px){
+  .lvl--3{grid-template-columns:1fr;gap:20px}
+  .lvl--3 .node{position:relative;padding-top:18px}
+  .lvl--3 .node::before{content:'';position:absolute;left:50%;top:0;width:1px;height:12px;background:rgba(255,255,255,.4)}
+  .fork--3{height:24px}
+  .fork--3::after{display:none}
+  .fork--3::before{height:24px}
+}
+
+/* ---------- 02: two tracks ---------- */
+.tracks{display:grid;gap:24px;margin-top:60px}
+.track{display:grid;grid-template-columns:110px 1fr;gap:22px;align-items:center;padding:20px 0;border-top:1px solid rgba(255,255,255,.28)}
+.track > em{font-size:13px;color:var(--blanco);text-align:right}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.chain b{font-weight:400;font-size:clamp(14px,2vw,20px);letter-spacing:-.01em;color:var(--blanco)}
+.chain i{font-style:normal;color:var(--blanco);opacity:.55;font-size:clamp(12px,1.5vw,16px)}
+
+/* ---------- 03: prompt cards ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:60px}
+.card{background:var(--blanco);border:1px solid var(--line);border-radius:2px;padding:24px}
+.card h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-bottom:14px}
+.card--on h4{color:var(--rojo)}
+.card--on{border-color:var(--line-strong);box-shadow:0 20px 40px -34px rgba(140,41,54,.6)}
+.prompt{font-size:13px;font-style:italic;color:var(--sombra);padding:12px 14px;background:var(--beige);border-radius:2px;line-height:1.45}
+.out{margin-top:16px;display:grid;gap:7px}
+.out li{font-size:11px;line-height:1.45;color:rgba(0,0,0,.55);padding-left:16px;position:relative}
+.out li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--line-strong)}
+.card--on .out li{color:var(--sombra)}
+.card--on .out li::before{background:var(--rojo)}
+.verdict{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;font-style:italic;color:rgba(0,0,0,.5)}
+.card--on .verdict{color:var(--rojo)}
+@media (max-width:720px){.cards{grid-template-columns:1fr}}
+
+/* ---------- 04: outputs ---------- */
+.outputs{display:flex;flex-wrap:wrap;gap:9px;margin-top:44px}
+.outputs li{font-size:11px;font-style:italic;padding:7px 16px;border:1px solid rgba(255,255,255,.4);border-radius:999px;color:var(--blanco)}
+
+/* ---------- 05: versus ---------- */
+.versus{display:grid;grid-template-columns:1fr 1px 1fr;margin-top:60px;border-top:1px solid var(--line-strong)}
+.versus-col{padding:30px 30px 30px 0}
+.versus-line{background:var(--line-strong)}
+.versus-col:last-child{padding:30px 0 30px 30px}
+.versus h3{font-weight:400;font-size:clamp(18px,2.6vw,26px);letter-spacing:-.01em;color:var(--sombra);line-height:1.05}
+.versus-col:last-child h3{color:var(--rojo)}
+.versus-face{margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.45)}
+.versus ul{margin-top:20px;display:grid;gap:8px}
+.versus li{font-size:14px;font-style:italic;color:var(--sombra)}
+.versus-col:last-child li{color:var(--rojo)}
+@media (max-width:720px){
+  .versus{grid-template-columns:1fr}
+  .versus-line{height:1px;width:100%}
+  .versus-col,.versus-col:last-child{padding:26px 0}
+  .versus-col:last-child{border-top:1px solid var(--line-strong)}
+}
+
+/* ---------- 06: master key ---------- */
+.key{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.key-box{border:1px solid rgba(255,255,255,.3);border-radius:2px;padding:24px}
+.key-box h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blanco);margin-bottom:16px}
+.key-box ul{display:grid;gap:10px}
+.key-box li{font-size:13px;line-height:1.35;color:rgba(255,255,255,.88);padding-left:18px;position:relative}
+.key-box li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:1px;background:var(--rojo)}
+.key-box--off{border-style:dashed;border-color:rgba(255,255,255,.2)}
+.key-box--off h4{color:rgba(255,255,255,.4)}
+.key-box--off li{color:rgba(255,255,255,.35)}
+.key-box--off li::before{background:rgba(255,255,255,.28)}
+@media (max-width:720px){.key{grid-template-columns:1fr}}
+
+/* ---------- 07: file tree ---------- */
+.tree-wrap{margin-top:60px;display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:36px;align-items:start}
+.tree{font-size:13px;line-height:1.5}
+.tree-root{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.tree-root b{font-weight:400;letter-spacing:.04em;color:var(--sombra)}
+.tree-root span{font-size:12px;font-style:italic;color:rgba(0,0,0,.45)}
+.tree ul{position:relative;margin-left:8px;padding-left:22px}
+.tree ul::before{content:'';position:absolute;left:0;top:0;bottom:20px;width:1px;background:var(--line-strong)}
+.tree li{position:relative;padding:2px 0}
+.tree li::before{content:'';position:absolute;left:-22px;top:1.05em;width:16px;height:1px;background:var(--line-strong)}
+.tree button{display:block;width:100%;text-align:left;background:none;border:0;padding:5px 10px;margin-left:-10px;border-radius:2px;font-family:var(--serif);font-size:13px;color:var(--sombra);cursor:pointer;transition:background .18s,color .18s}
+.tree button:hover{color:var(--rojo)}
+.tree button[aria-selected="true"]{background:#F3DCD8;color:var(--rojo)}
+.tree button small{font-style:italic;color:rgba(0,0,0,.45);margin-left:8px;font-size:12px}
+.tree button[aria-selected="true"] small{color:var(--rojo)}
+.detail{background:var(--blanco);border:1px solid var(--line);border-radius:2px;padding:26px;min-height:190px}
+.detail h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo);margin-bottom:12px}
+.detail-name{font-size:clamp(18px,2.5vw,25px);line-height:1.05;letter-spacing:-.01em;color:var(--sombra)}
+.detail-txt{margin-top:12px;font-size:13px;line-height:1.5;color:var(--sombra)}
+.fade{animation:fade .32s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:820px){.tree-wrap{grid-template-columns:1fr;gap:24px}}
+
+/* ---------- 05: what is a .md file ---------- */
+.md-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;margin-top:52px}
+.md-card{background:var(--blanco);border-radius:4px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;border:1px solid var(--line-strong)}
+.md-card-tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rojo)}
+/* raw markdown, styled like an actual text/code editor: monospace + line numbers */
+.md-code{counter-reset:mdline;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.75}
+.md-code-line{display:flex;gap:12px;counter-increment:mdline}
+.md-code-line i{font-style:normal;flex:none;width:16px;text-align:right;color:var(--rojo);opacity:.5;user-select:none}
+.md-code-line i::before{content:counter(mdline)}
+.md-code-line span{color:var(--sombra);white-space:pre}
+.md-rendered b{display:block;font-weight:400;font-size:17px;letter-spacing:-.01em;color:var(--sombra);margin-bottom:6px}
+.md-rendered p{font-size:12px;line-height:1.5;color:var(--sombra)}
+.md-rendered p em{color:var(--rojo)}
+.md-arrow{display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--rojo);opacity:.8}
+@media (max-width:720px){
+  .md-compare{grid-template-columns:1fr;gap:14px}
+  .md-arrow{transform:rotate(90deg);justify-content:flex-start;padding-left:6px}
+}
+
+/* ---------- 06: brandbook vs brand os — the two live demos ---------- */
+.versus-demo{margin-top:26px}
+.versus-demo-cap{margin-top:10px;font-size:12px;font-style:italic;color:rgba(0,0,0,.5);text-align:center}
+
+/* slideshow: brandbook flipped page by page (real spreads) */
+.slide-frame{position:relative;aspect-ratio:16/10;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;background:var(--rojo);box-shadow:0 16px 32px -26px rgba(0,0,0,.4)}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.slide.active{opacity:1}
+.slide-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:10px}
+.slide-dots i{width:5px;height:5px;border-radius:50%;background:var(--line-strong);transition:background .2s}
+.slide-dots i.on{background:var(--rojo)}
+
+/* mdscroll: the .md file, continuously running */
+.mdscroll-frame{position:relative;aspect-ratio:4/3;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;background:var(--blanco)}
+.mdscroll-track{position:absolute;inset:0;padding:14px 16px;animation:mdScroll 11s linear infinite}
+.mdscroll-track .md-code{margin-bottom:2px}
+@keyframes mdScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+@media (prefers-reduced-motion:reduce){.mdscroll-track{animation:none}.slide{transition:none}}
+
+/* ---------- 09: steps chain ---------- */
+.steps{margin-top:60px;display:grid;grid-template-columns:repeat(6,1fr);gap:0 30px}
+.step{position:relative;padding:0 4px}
+.step:first-child{padding-left:0}
+.step:last-child{padding-right:0}
+.step-n{width:30px;height:30px;border-radius:50%;border:1px solid var(--rojo);color:var(--rojo);display:grid;place-items:center;font-size:12px;background:var(--beige);position:relative;z-index:1;transition:background .25s,color .25s}
+.step.on .step-n{background:var(--rojo);color:var(--blanco)}
+.step::after{content:'';position:absolute;top:15px;left:calc(4px + 30px);right:-30px;height:1px;background:var(--line-strong)}
+.step:first-child::after{left:30px}
+.step:last-child::after{display:none}
+.step b{display:block;margin-top:16px;font-weight:400;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--sombra);line-height:1.2}
+@media (max-width:860px){
+  .steps{grid-template-columns:repeat(3,1fr);gap:30px 24px}
+  .step{padding:0}
+  .step::after{display:none}
+}
+@media (max-width:480px){.steps{grid-template-columns:repeat(2,1fr);gap:26px 20px}}
+
+/* ---------- dashboard preview: auto-playing demo fill ---------- */
+.preview{margin-top:64px;border:1px solid var(--line-strong);border-radius:6px;overflow:hidden;background:var(--blanco);box-shadow:0 26px 50px -36px rgba(0,0,0,.35)}
+.preview-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 14px;background:var(--beige);border-bottom:1px solid var(--line-strong)}
+.preview-dots{display:flex;gap:6px}
+.preview-dots i{width:9px;height:9px;border-radius:50%;background:var(--sombra);opacity:.25}
+.preview-dots i:nth-child(2){background:var(--rojo);opacity:.55}
+.preview-dots i:nth-child(3){background:var(--sombra);opacity:.25}
+.preview-url{font-size:12px;font-style:italic;color:rgba(0,0,0,.5)}
+.preview-open{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rojo);text-decoration:none;white-space:nowrap}
+.preview-open:hover{color:var(--sombra)}
+.preview-body{position:relative;height:380px;overflow:hidden;background:var(--rojo)}
+.demo{position:absolute;inset:0;padding:clamp(22px,4vw,34px);display:flex;flex-direction:column;justify-content:space-between}
+.demo-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.demo-brand{font-size:clamp(15px,2.1vw,20px);line-height:1.05;color:var(--blanco)}
+.demo-brand em{font-style:italic}
+.demo-brand span{display:block;margin-top:4px;font-size:11px;font-style:italic;color:rgba(255,255,255,.68)}
+.demo-pct{text-align:right}
+.demo-pct b{display:block;font-weight:400;font-size:18px;color:var(--blanco);line-height:1}
+.demo-pct i{font-style:italic;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.demo-rail{display:flex;align-items:center}
+.demo-rail i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.32);flex:none;transition:background .3s,transform .3s}
+.demo-rail i + i{margin-left:20px;position:relative}
+.demo-rail i + i::before{content:'';position:absolute;right:100%;top:50%;width:20px;height:1px;background:rgba(255,255,255,.26);transform:translateY(-50%)}
+.demo-rail i.on{background:var(--blanco);transform:scale(1.35)}
+.demo-rail i.done{background:var(--blanco)}
+.demo-field{margin-top:auto}
+.demo-label{display:block;font-size:11px;font-style:italic;color:var(--blanco);opacity:.9;margin-bottom:9px}
+.demo-input{background:var(--blanco);border-radius:2px;padding:12px 14px;min-height:19px;font-size:12px;line-height:1.3;color:var(--sombra);display:flex;align-items:center}
+.demo-caret{display:inline-block;width:1px;height:15px;background:var(--sombra);margin-left:2px;animation:demoBlink 1s step-end infinite}
+@keyframes demoBlink{50%{opacity:0}}
+.preview-cap{margin-top:14px;font-size:11px;font-style:italic;color:rgba(0,0,0,.5)}
+@media (max-width:640px){.preview-body{height:320px}}
+@media (prefers-reduced-motion:reduce){.demo-caret{animation:none}}
+
+/* ---------- 09 / close ---------- */
+.horizon{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.horizon li{border-top:1px solid rgba(255,255,255,.32);padding-top:16px}
+.horizon b{display:block;font-weight:400;font-size:15px;letter-spacing:.03em;text-transform:uppercase;color:var(--blanco)}
+.horizon span{display:block;margin-top:6px;font-size:11px;font-style:italic;line-height:1.4;color:rgba(255,255,255,.7)}
+@media (max-width:720px){.horizon{grid-template-columns:1fr;gap:16px}}
+
+.end{min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.end h2{font-size:clamp(33px,7.4vw,98px)}
+.qr-block{display:flex;align-items:center;gap:32px;margin-top:48px;flex-wrap:wrap}
+.qr-img{width:260px;height:260px;flex:none;border:1px solid var(--line-strong);border-radius:6px;padding:16px;background:var(--blanco)}
+.qr-txt span{display:block;font-size:16px;color:var(--sombra)}
+.qr-txt em{display:block;margin-top:8px;font-size:13px;color:var(--rojo);font-style:italic;word-break:break-all;max-width:32ch}
+.end-foot{margin-top:auto;padding-top:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;font-size:11px;color:rgba(0,0,0,.55)}
+@media (max-width:860px){.qr-img{width:200px;height:200px}}
+@media (max-width:480px){.qr-block{gap:18px}.qr-img{width:160px;height:160px;padding:10px}}
+
+/* ---------- Mobile stacking ---------- */
+@media (max-width:640px){
+  .s{padding:76px 20px}
+  .rows{gap:22px;margin-top:32px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .row > em{text-align:left;font-size:12px}
+  .track{grid-template-columns:1fr;gap:8px;padding:18px 0}
+  .track > em{text-align:left;font-size:12px}
+  .quote{margin-top:32px;padding-left:16px}
+  .split{margin-top:36px}
+  .split span + span{margin-left:6%}
+  .diagram{margin-top:36px}
+  .tree-wrap,.versus,.cards,.key,.steps,.horizon,.preview{margin-top:32px}
+  .card,.detail,.key-box{padding:20px}
+  .end-foot{padding-top:36px}
+  .preview-url{display:none}
+  .preview-bar{justify-content:flex-end}
+}
+
+/* ---------- Reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(14px);filter:blur(3px);transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  .fade{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="prog"><i id="prog"></i></div>
+<div class="marker" id="marker">00</div>
+
+<!-- ============ COVER ============ -->
+<header class="cover" data-n="00">
+  <div class="cover-top">
+    <span>Free course</span>
+    <span>LaGutierrez · 2026</span>
+  </div>
+  <div class="cover-mid">
+    <h1>AI Brand<br><em>OS</em></h1>
+    <p class="cover-sub">The context layer your brand needs before AI touches it.</p>
+  </div>
+  <div class="cover-bot">
+    <div class="cover-by">
+      <b>Luciana Gutierrez C.</b>
+      AI Brand Strategist &amp; Builder
+    </div>
+    <img class="logo" src="logo-lagutierrez.png" alt="LaGutierrez">
+  </div>
+</header>
+
+<!-- ============ 00 · WHO AM I ============ -->
+<section class="s s--beige" data-n="00">
+  <div class="wrap">
+    <div class="num rv"><b>00</b><i></i><b>Who am I?</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Luciana<br>Gutierrez C.</h2>
+    <p class="sub rv">AI Brand Strategist &amp; Builder <em>at LaGutierrez</em></p>
+
+    <div class="who rv">
+      <div class="portrait">
+        <img src="luciana.png" alt="Luciana Gutierrez C.">
+      </div>
+      <div class="who-txt">
+        <p>I help brands build identities that stay <em>clear, distinct, and consistent</em> — across industries, across teams.</p>
+        <p>AI can make almost anything now. The real question: <em>how do we make sure it still feels like you?</em></p>
+      </div>
+    </div>
+
+    <div class="connect rv">
+      <div class="connect-item">
+        <div class="connect-qr" id="qrLinkedin"></div>
+        <div class="connect-txt"><b>LinkedIn</b><a id="linkLinkedin" href="#" target="_blank" rel="noopener">Connect →</a></div>
+      </div>
+      <div class="connect-item">
+        <div class="connect-qr" id="qrInstagram"></div>
+        <div class="connect-txt"><b>Instagram</b><a id="linkInstagram" href="#" target="_blank" rel="noopener">Follow →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 · WHY BRANDING ============ -->
+<section class="s s--white" data-n="01">
+  <div class="wrap">
+    <div class="num rv"><b>01</b><i></i><b>Why branding?</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Direction,<br><em>not decoration</em>.</h2>
+    <p class="lead rv" style="margin-top:18px">A brandbook isn't about your colors. It's what lets different people make the <em>same</em> decisions.</p>
+
+    <p class="split rv"><span>It doesn't describe the brand.</span><span>It directs it.</span></p>
+  </div>
+</section>
+
+<!-- ============ 02 · AND THEN AI ARRIVES ============ -->
+<section class="s s--red" data-n="02">
+  <div class="wrap">
+    <div class="num rv"><b>02</b><i></i><b>And then AI arrives</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">AI doesn't create<br>the brand. <em>It executes it.</em></h2>
+
+    <div class="tracks">
+      <div class="track rv">
+        <em>First</em>
+        <div class="chain"><b>strategy</b><i>→</i><b>direction</b><i>→</i><b>decisions</b></div>
+      </div>
+      <div class="track rv">
+        <em>Then</em>
+        <div class="chain"><b>AI</b><i>→</i><b>acceleration</b><i>→</i><b>execution</b></div>
+      </div>
+    </div>
+
+    <div class="quote rv">
+      <p>Without context, AI could be building <em>anyone's</em> brand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · THE CONTEXT PROBLEM ============ -->
+<section class="s s--white" data-n="03">
+  <div class="wrap">
+    <div class="num rv"><b>03</b><i></i><b>The context problem</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">It's not the tool.<br>It's the <em>context</em>.</h2>
+
+    <div class="cards">
+      <div class="card rv">
+        <h4>No context</h4>
+        <p class="prompt">“Make me a campaign for my brand.”</p>
+        <ul class="out">
+          <li>Correct, well-written</li>
+          <li>Could belong to any competitor</li>
+          <li>Explained from scratch again tomorrow</li>
+        </ul>
+        <p class="verdict">Correct. And generic.</p>
+      </div>
+      <div class="card card--on rv">
+        <h4>With brand context</h4>
+        <p class="prompt">Same prompt <em>+ the context you defined once.</em></p>
+        <ul class="out">
+          <li>Speaks in your tone, not anyone's</li>
+          <li>Holds up across pieces and people</li>
+          <li>Picks up where you left off</li>
+        </ul>
+        <p class="verdict">Yours. And repeatable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · ENTER BRAND OS ============ -->
+<section class="s s--red" data-n="04">
+  <div class="wrap">
+    <div class="num rv"><b>04</b><i></i><b>Enter: Brand OS</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Enter:<br><em>Brand OS</em></h2>
+
+    <p class="split rv"><span>Define the brand once.</span><span>Extend it many times.</span></p>
+
+    <figure class="diagram rv">
+      <div class="lvl"><div class="node"><b>Brandbook</b><span>the brand, defined</span></div></div>
+      <div class="fork fork--2"></div>
+      <div class="lvl lvl--2">
+        <div class="node"><b>Human version</b><span>visual / editorial</span></div>
+        <div class="node"><b>Machine version</b><span>structured / .md</span></div>
+      </div>
+      <div class="merge merge--2"></div>
+      <div class="lvl">
+        <div class="node node--key"><b>Brand OS</b><span>reusable context</span><br><span class="tagline">Today's build</span></div>
+      </div>
+      <div class="fork fork--3"></div>
+      <div class="lvl lvl--3">
+        <div class="node"><b>Skill</b><span>custom skill</span></div>
+        <div class="node"><b>Web</b><span>brand portal</span></div>
+        <div class="node"><b>AI</b><span>prompts / agents</span></div>
+      </div>
+      <figcaption class="dg-cap">One definition · two versions · many extensions</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 05 · WHAT IS A .MD FILE ============ -->
+<section class="s s--beige" data-n="05">
+  <div class="wrap">
+    <div class="num rv"><b>05</b><i></i><b>The file format</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">It's just <em>a text file</em>.</h2>
+    <p class="lead rv" style="margin-top:18px">A <em>.md</em> (Markdown) file is plain text with a few light marks for structure. No software, no code — it opens in Notes, Word, anything.</p>
+
+    <div class="md-compare rv">
+      <div class="md-card md-card--raw">
+        <span class="md-card-tag">md file</span>
+        <div class="md-code">
+          <div class="md-code-line"><i></i><span># Brand Voice</span></div>
+          <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+          <div class="md-code-line"><i></i><span>Warm, precise, a little *dry*.</span></div>
+        </div>
+      </div>
+      <div class="md-arrow">→</div>
+      <div class="md-card md-card--rendered">
+        <span class="md-card-tag">Anyone reads it</span>
+        <div class="md-rendered">
+          <b>Brand Voice</b>
+          <p>Warm, precise, a little <em>dry</em>.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead rv" style="margin-top:40px;max-width:40ch"><em>#</em> becomes a heading. <em>*word*</em> becomes italic. That's the whole trick — and exactly the format AI reads best.</p>
+  </div>
+</section>
+
+<!-- ============ 06 · BRANDBOOK vs BRAND OS ============ -->
+<section class="s s--white" data-n="06">
+  <div class="wrap">
+    <div class="num rv"><b>06</b><i></i><b>Brandbook vs Brand OS</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">They don't compete.<br><em>Different jobs.</em></h2>
+
+    <div class="versus">
+      <div class="versus-col rv">
+        <h3>Brandbook</h3>
+        <p class="versus-face">Human-facing</p>
+        <ul>
+          <li>Visual</li><li>Editorial</li><li>Inspirational</li>
+        </ul>
+        <div class="versus-demo slideshow" id="slideshow">
+          <div class="slide-frame">
+            <img class="slide active" data-slide="0" src="brandbook-01.png" alt="Brandbook cover">
+            <img class="slide" data-slide="1" src="brandbook-02.png" alt="Brandbook — concept page">
+            <img class="slide" data-slide="2" src="brandbook-03.png" alt="Brandbook — tone of voice page">
+            <img class="slide" data-slide="3" src="brandbook-04.png" alt="Brandbook — manifesto page">
+            <img class="slide" data-slide="4" src="brandbook-05.png" alt="Brandbook — target audience page">
+            <img class="slide" data-slide="5" src="brandbook-06.png" alt="Brandbook — final logo page">
+            <img class="slide" data-slide="6" src="brandbook-07.png" alt="Brandbook — icon mark page">
+            <img class="slide" data-slide="7" src="brandbook-08.png" alt="Brandbook — color palette page">
+            <img class="slide" data-slide="8" src="brandbook-09.png" alt="Brandbook — typography page">
+            <img class="slide" data-slide="9" src="brandbook-10.png" alt="Brandbook — layout guides page">
+          </div>
+          <div class="slide-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="versus-demo-cap">Flipped through, slide by slide</p>
+        </div>
+      </div>
+      <div class="versus-line"></div>
+      <div class="versus-col rv">
+        <h3>Brand OS</h3>
+        <p class="versus-face">AI-facing</p>
+        <ul>
+          <li>Structured</li><li>Concise</li><li>Reusable</li>
+        </ul>
+        <div class="versus-demo mdscroll">
+          <div class="mdscroll-frame">
+            <div class="mdscroll-track">
+              <div class="md-code">
+                <div class="md-code-line"><i></i><span># brandbook-os.md</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 01 &middot; Core</span></div>
+                <div class="md-code-line"><i></i><span>Brand architecture + AI, Barcelona.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 02 &middot; Character</span></div>
+                <div class="md-code-line"><i></i><span>Innovative. Creative. AI-forward.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 03 &middot; Audience</span></div>
+                <div class="md-code-line"><i></i><span>Founders building a world of their own.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 05 &middot; Expression</span></div>
+                <div class="md-code-line"><i></i><span>Smart. Concise. Straight to the point.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 06 &middot; AI must never</span></div>
+                <div class="md-code-line"><i></i><span>Never generic. Never banal.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+              </div>
+              <div class="md-code" aria-hidden="true">
+                <div class="md-code-line"><i></i><span># brandbook-os.md</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 01 &middot; Core</span></div>
+                <div class="md-code-line"><i></i><span>Brand architecture + AI, Barcelona.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 02 &middot; Character</span></div>
+                <div class="md-code-line"><i></i><span>Innovative. Creative. AI-forward.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 03 &middot; Audience</span></div>
+                <div class="md-code-line"><i></i><span>Founders building a world of their own.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 05 &middot; Expression</span></div>
+                <div class="md-code-line"><i></i><span>Smart. Concise. Straight to the point.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+                <div class="md-code-line"><i></i><span>## 06 &middot; AI must never</span></div>
+                <div class="md-code-line"><i></i><span>Never generic. Never banal.</span></div>
+                <div class="md-code-line"><i></i><span>&nbsp;</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="versus-demo-cap">The .md, running</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · THE MASTER KEY ============ -->
+<section class="s s--red" data-n="07">
+  <div class="wrap">
+    <div class="num rv"><b>07</b><i></i><b>The master key</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Don't document it all.<br><em>Capture what matters.</em></h2>
+
+    <div class="quote rv">
+      <p>What's the <em>minimum context</em> that actually changes what AI creates?</p>
+    </div>
+
+    <div class="key">
+      <div class="key-box rv">
+        <h4>Today</h4>
+        <ul>
+          <li>The decisions AI shouldn't lose</li>
+          <li>A working first version, by tonight</li>
+        </ul>
+      </div>
+      <div class="key-box key-box--off rv">
+        <h4>Not today</h4>
+        <ul>
+          <li>The full LaGutierrez Master Key</li>
+          <li>Governance, versioning, QA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · WHAT WE'RE BUILDING ============ -->
+<section class="s s--white" data-n="08">
+  <div class="wrap">
+    <div class="num rv"><b>08</b><i></i><b>What we're building</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">A <em>Brand Context<br>Package</em></h2>
+    <p class="lead rv" style="margin-top:18px">One folder. Reusable as context for any AI tool. <em>No code required</em> — tap a file.</p>
+
+    <div class="tree-wrap rv">
+      <div class="tree">
+        <div class="tree-root"><b>BRAND_OS/</b><span>just a folder</span></div>
+        <ul id="tree-list">
+          <li><button data-k="brand" aria-selected="true">brand.md</button></li>
+          <li><button data-k="strategy">strategy.md</button></li>
+          <li><button data-k="voice">voice.md</button></li>
+          <li><button data-k="visual">visual.md</button></li>
+          <li><button data-k="behavior">behavior.md</button></li>
+          <li><button data-k="references">references/ <small>folder</small></button></li>
+          <li><button data-k="readme">README.md</button></li>
+        </ul>
+      </div>
+
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · LET'S BUILD IT ============ -->
+<section class="s s--beige" data-n="09">
+  <div class="wrap">
+    <div class="num rv"><b>09</b><i></i><b>Let's build it</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Six essential<br><em>decisions</em>.</h2>
+
+    <ol class="steps" id="stepsList">
+      <li class="step rv" data-step="0"><div class="step-n">1</div><b>Core</b></li>
+      <li class="step rv" data-step="1"><div class="step-n">2</div><b>Character</b></li>
+      <li class="step rv" data-step="2"><div class="step-n">3</div><b>Audience</b></li>
+      <li class="step rv" data-step="3"><div class="step-n">4</div><b>World</b></li>
+      <li class="step rv" data-step="4"><div class="step-n">5</div><b>Expression</b></li>
+      <li class="step rv" data-step="5"><div class="step-n">6</div><b>AI Rules</b></li>
+    </ol>
+
+    <figure class="preview rv">
+      <div class="preview-bar">
+        <div class="preview-dots"><i></i><i></i><i></i></div>
+        <span class="preview-url">sample walkthrough · auto-playing</span>
+        <a class="preview-open" href="index.html" target="_blank" rel="noopener">Open tool ↗</a>
+      </div>
+      <div class="preview-body">
+        <div class="demo" id="demo">
+          <div class="demo-top">
+            <div class="demo-brand">Brandbook <em>OS</em><span>by LaGutierrez</span></div>
+            <div class="demo-pct"><b id="demoPct">0%</b><i>progress</i></div>
+          </div>
+          <div class="demo-rail" id="demoRail">
+            <i data-i="0"></i><i data-i="1"></i><i data-i="2"></i><i data-i="3"></i><i data-i="4"></i><i data-i="5"></i>
+          </div>
+          <div class="demo-field">
+            <span class="demo-label" id="demoLabel">Core</span>
+            <div class="demo-input"><span id="demoValue"></span><i class="demo-caret"></i></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <p class="preview-cap rv">A quick run-through with sample answers — not your real data.</p>
+  </div>
+</section>
+
+<!-- ============ 10 · THE NEXT STEP ============ -->
+<section class="s s--red" data-n="10">
+  <div class="wrap">
+    <div class="num rv"><b>10</b><i></i><b>The next step</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">This is just<br><em>the first layer</em>.</h2>
+
+    <ul class="horizon">
+      <li class="rv"><b>Skill</b><span>Your brand, usable without explaining it.</span></li>
+      <li class="rv"><b>Portal</b><span>A living place your team pulls context from.</span></li>
+      <li class="rv"><b>Agents</b><span>Systems that execute inside your rules.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section class="s s--white end" data-n="11">
+  <div class="wrap">
+    <p class="eyebrow rv">LaGutierrez</p>
+    <h2 class="rv" style="margin-top:18px">Let's build<br>your <em>Brand OS</em>.</h2>
+
+    <div class="qr-block rv">
+      <img class="qr-img" src="qr-dashboard.png" alt="QR code linking to the Brand OS dashboard tool">
+      <div class="qr-txt">
+        <span>Scan to open the tool</span>
+        <em>infolagutierrez-hub.github.io/BrandOS-by-LaGutierrez</em>
+      </div>
+    </div>
+
+    <div class="end-foot rv">
+      <div>
+        <b style="display:block;font-weight:400;font-size:15px;color:var(--sombra)">Luciana Gutierrez C.</b>
+        AI Brand Strategist &amp; Builder
+      </div>
+      <img class="logo" src="logo-lagutierrez.png" alt="LaGutierrez">
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  /* ---- LinkedIn / Instagram QR (section 00) — edit these two lines with the real profile URLs ---- */
+  var LINKEDIN_URL = 'https://www.linkedin.com/in/REPLACE-ME';
+  var INSTAGRAM_URL = 'https://www.instagram.com/REPLACE-ME';
+  var linkedinA = document.getElementById('linkLinkedin'), instagramA = document.getElementById('linkInstagram');
+  if (linkedinA) linkedinA.href = LINKEDIN_URL;
+  if (instagramA) instagramA.href = INSTAGRAM_URL;
+  if (window.QRCode) {
+    var qrOpts = { width: 84, height: 84, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M };
+    var qrLi = document.getElementById('qrLinkedin'), qrIg = document.getElementById('qrInstagram');
+    if (qrLi) new QRCode(qrLi, Object.assign({ text: LINKEDIN_URL }, qrOpts));
+    if (qrIg) new QRCode(qrIg, Object.assign({ text: INSTAGRAM_URL }, qrOpts));
+  }
+
+  /* ---- File tree content ---- */
+  var FILES = {
+    brand:     {name:'brand.md',      t:'The core',      d:'Who you are once you strip everything else away.'},
+    strategy:  {name:'strategy.md',   t:'The direction',  d:'Who you serve, and what’s already decided.'},
+    voice:     {name:'voice.md',      t:'How you talk',   d:'Tone, rhythm, words you’d never use.'},
+    visual:    {name:'visual.md',     t:'How you look',   d:'Mood and references, described in words.'},
+    behavior:  {name:'behavior.md',   t:'How you decide',  d:'What your brand always does. Never does.'},
+    references:{name:'references/',  t:'The proof',      d:'Real examples that already feel like you.'},
+    readme:    {name:'README.md',     t:'The front door', d:'What’s inside, and how to use it — no explaining required.'}
+  };
+  var detail = document.getElementById('detail');
+  var btns = [].slice.call(document.querySelectorAll('#tree-list button'));
+  function render(k){
+    var f = FILES[k]; if(!f) return;
+    detail.innerHTML = '<div class="fade"><h4>'+f.t+'</h4>'+
+      '<p class="detail-name"><em>'+f.name+'</em></p>'+
+      '<p class="detail-txt">'+f.d+'</p></div>';
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(o){o.setAttribute('aria-selected','false')});
+      b.setAttribute('aria-selected','true');
+      render(b.dataset.k);
+    });
+  });
+  render('brand');
+
+  /* ---- Dashboard demo: auto-plays a fake fill-through, loops like a gif ---- */
+  (function(){
+    var demo = document.getElementById('demo');
+    if(!demo) return;
+    var pctEl = document.getElementById('demoPct');
+    var labelEl = document.getElementById('demoLabel');
+    var valueEl = document.getElementById('demoValue');
+    var railDots = [].slice.call(document.querySelectorAll('#demoRail i'));
+    var stepLis = [].slice.call(document.querySelectorAll('#stepsList .step'));
+    var FIELDS = [
+      {label:'Core',       value:'Slow mornings, sharper thinking.'},
+      {label:'Character',  value:'Warm. Precise. A little dry.'},
+      {label:'Audience',   value:'Founders tired of hype.'},
+      {label:'World',      value:'Linen, low light, vinyl hum.'},
+      {label:'Expression', value:'Short sentences. No exclamation points.'},
+      {label:'AI Rules',   value:'Never oversell. Never shout.'}
+    ];
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function wait(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+    function setActive(i){
+      railDots.forEach(function(d,idx){
+        d.classList.toggle('on', idx===i);
+        d.classList.toggle('done', idx<i);
+      });
+      stepLis.forEach(function(li){ li.classList.toggle('on', +li.dataset.step === i); });
+    }
+    function clearActive(){
+      railDots.forEach(function(d){ d.classList.remove('on','done'); });
+      stepLis.forEach(function(li){ li.classList.remove('on'); });
+    }
+
+    async function typeValue(text){
+      for(var i=1;i<=text.length;i++){
+        valueEl.textContent = text.slice(0,i);
+        await wait(24);
+      }
+    }
+    async function eraseValue(){
+      var text = valueEl.textContent;
+      for(var i=text.length;i>=0;i--){
+        valueEl.textContent = text.slice(0,i);
+        await wait(10);
+      }
+    }
+
+    async function playOnce(){
+      clearActive();
+      pctEl.textContent = '0%';
+      for(var i=0;i<FIELDS.length;i++){
+        setActive(i);
+        labelEl.textContent = FIELDS[i].label;
+        await typeValue(FIELDS[i].value);
+        pctEl.textContent = Math.round(((i+1)/FIELDS.length)*100) + '%';
+        await wait(650);
+        await eraseValue();
+      }
+      stepLis.forEach(function(li){ li.classList.remove('on'); });
+      await wait(500);
+    }
+
+    async function loop(){
+      if(reduced){
+        setActive(2);
+        labelEl.textContent = FIELDS[2].label;
+        valueEl.textContent = FIELDS[2].value;
+        pctEl.textContent = '50%';
+        return;
+      }
+      while(true){ await playOnce(); }
+    }
+    loop();
+  })();
+
+  /* ---- Brandbook slideshow: flips through pages fast, on loop ---- */
+  (function(){
+    var slides = [].slice.call(document.querySelectorAll('#slideshow .slide'));
+    var dots = [].slice.call(document.querySelectorAll('#slideshow .slide-dots i'));
+    if(!slides.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    dots.forEach(function(d,i){ d.classList.toggle('on', i===0); });
+    if(reduced) return;
+    var i = 0;
+    setInterval(function(){
+      i = (i+1) % slides.length;
+      slides.forEach(function(sl,idx){ sl.classList.toggle('active', idx===i); });
+      dots.forEach(function(d,idx){ d.classList.toggle('on', idx===i); });
+    }, 750);
+  })();
+
+  /* ---- Reveal on scroll ---- */
+  var rv = [].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var sibs = [].slice.call(e.target.parentNode.children).filter(function(n){return n.classList.contains('rv')});
+          var i = Math.max(0, sibs.indexOf(e.target));
+          e.target.style.transitionDelay = Math.min(i*60, 300)+'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -12% 0px', threshold:.06});
+    rv.forEach(function(n){io.observe(n)});
+  } else { rv.forEach(function(n){n.classList.add('in')}); }
+
+  /* ---- Progress + section marker ---- */
+  var bar = document.getElementById('prog');
+  var marker = document.getElementById('marker');
+  var secs = [].slice.call(document.querySelectorAll('[data-n]'));
+  var tick = false;
+  function update(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var y = window.scrollY || window.pageYOffset;
+    bar.style.width = (h>0 ? Math.min(100, (y/h)*100) : 0)+'%';
+    var cur = secs[0];
+    secs.forEach(function(s){ if(s.getBoundingClientRect().top <= window.innerHeight*0.4) cur = s; });
+    marker.textContent = cur.dataset.n;
+    marker.classList.toggle('on', y > window.innerHeight*0.6);
+    tick = false;
+  }
+  window.addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(update); } }, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>
