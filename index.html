@@ -126,12 +126,12 @@ h2 em{color:var(--rojo)}
 /* ---------- 00: connect — LinkedIn / Instagram + QR ---------- */
 .connect{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px}
 .connect-item{display:flex;align-items:center;gap:14px}
-.connect-qr{width:84px;height:84px;flex:none;border:1px solid var(--line-strong);border-radius:4px;padding:6px;background:var(--blanco);display:flex;align-items:center;justify-content:center}
+.connect-qr{width:128px;height:128px;flex:none;border:1px solid var(--line-strong);border-radius:4px;padding:8px;background:var(--blanco);display:flex;align-items:center;justify-content:center}
 .connect-qr img,.connect-qr canvas,.connect-qr table{display:block;width:100%!important;height:100%!important}
 .connect-txt b{display:block;font-weight:400;font-size:13px;color:var(--sombra);margin-bottom:3px}
 .connect-txt a{font-size:12px;font-style:italic;color:var(--rojo);text-decoration:none}
 .connect-txt a:hover{text-decoration:underline}
-@media (max-width:640px){.connect{gap:18px 24px}.connect-qr{width:72px;height:72px}}
+@media (max-width:640px){.connect{gap:18px 24px}.connect-qr{width:104px;height:104px}}
 
 /* ---------- Diagram: hierarchy tree ---------- */
 .diagram{margin:72px auto 0;max-width:900px}
@@ -798,7 +798,7 @@ h2 em{color:var(--rojo)}
   if (linkedinA) linkedinA.href = LINKEDIN_URL;
   if (instagramA) instagramA.href = INSTAGRAM_URL;
   if (window.QRCode) {
-    var qrOpts = { width: 84, height: 84, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M };
+    var qrOpts = { width: 128, height: 128, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M };
     var qrLi = document.getElementById('qrLinkedin'), qrIg = document.getElementById('qrInstagram');
     if (qrLi) new QRCode(qrLi, Object.assign({ text: LINKEDIN_URL }, qrOpts));
     if (qrIg) new QRCode(qrIg, Object.assign({ text: INSTAGRAM_URL }, qrOpts));
