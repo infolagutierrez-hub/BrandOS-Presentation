@@ -220,29 +220,6 @@ h2 em{color:var(--rojo)}
   .versus-col:last-child{border-top:1px solid var(--line-strong)}
 }
 
-/* ---------- 07: file tree ---------- */
-.tree-wrap{margin-top:60px;display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:36px;align-items:start}
-.tree{font-size:13px;line-height:1.5}
-.tree-root{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-.tree-root b{font-weight:400;letter-spacing:.04em;color:var(--sombra)}
-.tree-root span{font-size:12px;font-style:italic;color:rgba(0,0,0,.45)}
-.tree ul{position:relative;margin-left:8px;padding-left:22px}
-.tree ul::before{content:'';position:absolute;left:0;top:0;bottom:20px;width:1px;background:var(--line-strong)}
-.tree li{position:relative;padding:2px 0}
-.tree li::before{content:'';position:absolute;left:-22px;top:1.05em;width:16px;height:1px;background:var(--line-strong)}
-.tree button{display:block;width:100%;text-align:left;background:none;border:0;padding:5px 10px;margin-left:-10px;border-radius:2px;font-family:var(--serif);font-size:13px;color:var(--sombra);cursor:pointer;transition:background .18s,color .18s}
-.tree button:hover{color:var(--rojo)}
-.tree button[aria-selected="true"]{background:#F3DCD8;color:var(--rojo)}
-.tree button small{font-style:italic;color:rgba(0,0,0,.45);margin-left:8px;font-size:12px}
-.tree button[aria-selected="true"] small{color:var(--rojo)}
-.detail{background:var(--blanco);border:1px solid var(--line);border-radius:2px;padding:26px;min-height:190px}
-.detail h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo);margin-bottom:12px}
-.detail-name{font-size:clamp(18px,2.5vw,25px);line-height:1.05;letter-spacing:-.01em;color:var(--sombra)}
-.detail-txt{margin-top:12px;font-size:13px;line-height:1.5;color:var(--sombra)}
-.fade{animation:fade .32s var(--ease)}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (max-width:820px){.tree-wrap{grid-template-columns:1fr;gap:24px}}
-
 /* ---------- 05: what is a .md file ---------- */
 .md-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;margin-top:52px}
 .md-card{background:var(--blanco);border-radius:4px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;border:1px solid var(--line-strong)}
@@ -342,7 +319,13 @@ h2 em{color:var(--rojo)}
 
 .end{min-height:78vh;display:flex;flex-direction:column;justify-content:center}
 .end h2{font-size:clamp(33px,7.4vw,98px)}
-.qr-block{display:flex;align-items:center;gap:32px;margin-top:48px;flex-wrap:wrap}
+.feed{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:44px}
+.feed-pill{font-size:12px;letter-spacing:.02em;color:var(--rojo);border:1px solid var(--rojo);border-radius:999px;padding:6px 14px;line-height:1.2}
+.feed-pill--file{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px}
+.feed-arrow{color:var(--rojo);font-size:15px;opacity:.7}
+.feed-txt{margin-top:16px;max-width:42ch;font-size:14px;line-height:1.5;color:var(--sombra)}
+.feed-txt em{color:var(--rojo)}
+.qr-block{display:flex;align-items:center;gap:32px;margin-top:40px;flex-wrap:wrap}
 .qr-img{width:260px;height:260px;flex:none;border:1px solid var(--line-strong);border-radius:6px;padding:16px;background:var(--blanco)}
 .qr-txt span{display:block;font-size:16px;color:var(--sombra)}
 .qr-txt em{display:block;margin-top:8px;font-size:13px;color:var(--rojo);font-style:italic;word-break:break-all;max-width:32ch}
@@ -362,8 +345,8 @@ h2 em{color:var(--rojo)}
   .split{margin-top:36px}
   .split span + span{margin-left:6%}
   .diagram{margin-top:36px}
-  .tree-wrap,.versus,.cards,.steps,.horizon,.preview{margin-top:32px}
-  .card,.detail{padding:20px}
+  .versus,.cards,.steps,.horizon,.preview{margin-top:32px}
+  .card{padding:20px}
   .end-foot{padding-top:36px}
   .preview-url{display:none}
   .preview-bar{justify-content:flex-end}
@@ -641,38 +624,10 @@ h2 em{color:var(--rojo)}
   </div>
 </section>
 
-<!-- ============ 07 · WHAT WE'RE BUILDING ============ -->
-<section class="s s--beige" data-n="07">
+<!-- ============ 07 · SET UP YOUR FILES ============ -->
+<section class="s s--red" data-n="07">
   <div class="wrap">
-    <div class="num rv"><b>07</b><i></i><b>What we're building</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
-    <h2 class="rv">A <em>Visual<br>Direction</em></h2>
-    <p class="lead rv" style="margin-top:18px">One document. Reusable as context for any AI tool. <em>No code required</em> — tap a block.</p>
-
-    <div class="tree-wrap rv">
-      <div class="tree">
-        <div class="tree-root"><b>visual-direction.md</b><span>one document</span></div>
-        <ul id="tree-list">
-          <li><button data-k="copy" aria-selected="true">00 &middot; Your copy</button></li>
-          <li><button data-k="world">01 &middot; The visual world</button></li>
-          <li><button data-k="type">02 &middot; Name and type</button></li>
-          <li><button data-k="colour">03 &middot; Colour</button></li>
-          <li><button data-k="structure">04 &middot; Page structure</button></li>
-          <li><button data-k="architecture">05 &middot; Page architecture</button></li>
-          <li><button data-k="materials">06 &middot; Illustration &amp; materials</button></li>
-          <li><button data-k="graphics">07 &middot; Graphic elements</button></li>
-          <li><button data-k="avoid">08 &middot; What to avoid</button></li>
-        </ul>
-      </div>
-
-      <div class="detail" id="detail" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 08 · SET UP YOUR FILES ============ -->
-<section class="s s--red" data-n="08">
-  <div class="wrap">
-    <div class="num rv"><b>08</b><i></i><b>Set up your files</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <div class="num rv"><b>07</b><i></i><b>Set up your files</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
     <h2 class="rv">Three things.<br><em>One folder.</em></h2>
 
     <figure class="diagram rv">
@@ -690,18 +645,18 @@ h2 em{color:var(--rojo)}
         <div class="node">
           <i class="node-n">1.1</i>
           <b>MD file</b>
-          <span>one file &middot; the whole direction</span><br>
-          <span class="tagline tagline--file">visual-direction.md</span>
+          <span>from the tool &middot; one file</span><br>
+          <span class="tagline tagline--file">visual-direction-en.md</span>
           <ul class="node-files">
-            <li>## Visual foundation</li>
-            <li>## Colour system</li>
-            <li>## Page architecture</li>
+            <li>## 01. Visual Foundation</li>
+            <li>## 03. Color System</li>
+            <li>## 05. Page Architecture</li>
           </ul>
         </div>
         <div class="node">
           <i class="node-n">1.2</i>
           <b>Logos</b>
-          <span>one file per logo</span><br>
+          <span>you add &middot; one file per logo</span><br>
           <span class="tagline tagline--file">logos/</span>
           <ul class="node-files">
             <li>logo-white.png</li>
@@ -712,7 +667,7 @@ h2 em{color:var(--rojo)}
         <div class="node">
           <i class="node-n">1.3</i>
           <b>Images</b>
-          <span>one file per image</span><br>
+          <span>from the tool &middot; your references</span><br>
           <span class="tagline tagline--file">references/</span>
           <ul class="node-files">
             <li>01-reference.png</li>
@@ -726,10 +681,10 @@ h2 em{color:var(--rojo)}
   </div>
 </section>
 
-<!-- ============ 09 · LET'S BUILD IT ============ -->
-<section class="s s--beige" data-n="09">
+<!-- ============ 08 · LET'S BUILD IT ============ -->
+<section class="s s--beige" data-n="08">
   <div class="wrap">
-    <div class="num rv"><b>09</b><i></i><b>Let's build it</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <div class="num rv"><b>08</b><i></i><b>Let's build it</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
     <h2 class="rv">Eight<br><em>blocks</em>.</h2>
 
     <ol class="steps" id="stepsList">
@@ -769,10 +724,10 @@ h2 em{color:var(--rojo)}
   </div>
 </section>
 
-<!-- ============ 10 · THE NEXT STEP ============ -->
-<section class="s s--red" data-n="10">
+<!-- ============ 09 · THE NEXT STEP ============ -->
+<section class="s s--red" data-n="09">
   <div class="wrap">
-    <div class="num rv"><b>10</b><i></i><b>The next step</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <div class="num rv"><b>09</b><i></i><b>The next step</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
     <h2 class="rv">This is just<br><em>the first layer</em>.</h2>
 
     <ul class="horizon">
@@ -784,10 +739,20 @@ h2 em{color:var(--rojo)}
 </section>
 
 <!-- ============ CLOSE ============ -->
-<section class="s s--white end" data-n="11">
+<section class="s s--white end" data-n="10">
   <div class="wrap">
     <p class="eyebrow rv">LaGutierrez</p>
     <h2 class="rv" style="margin-top:18px">Let's build<br>your <em>Brand OS</em>.</h2>
+
+    <div class="feed rv">
+      <span class="feed-pill feed-pill--file">visual-direction-en.md</span>
+      <span class="feed-arrow">&rarr;</span>
+      <span class="feed-pill">AI</span>
+      <span class="feed-arrow">&rarr;</span>
+      <span class="feed-pill">Website</span>
+      <span class="feed-pill">Landing page</span>
+    </div>
+    <p class="feed-txt rv">Hand this design <em>.md</em> to an AI and it builds your website or landing page in your style &mdash; your colours, type and layout rules, on every page.</p>
 
     <div class="qr-block rv">
       <img class="qr-img" src="qr-webdesign-os.png" alt="QR code linking to the WebDesign OS tool">
@@ -822,35 +787,6 @@ h2 em{color:var(--rojo)}
     if (qrLi) new QRCode(qrLi, Object.assign({ text: LINKEDIN_URL }, qrOpts));
     if (qrIg) new QRCode(qrIg, Object.assign({ text: INSTAGRAM_URL }, qrOpts));
   }
-
-  /* ---- File tree content ---- */
-  var FILES = {
-    copy:        {name:'Your copy',               t:'The words',        d:'Your own text, pasted as it is. The AI builds the page from these exact words — and decides the format and sections from them.'},
-    world:       {name:'The visual world',        t:'The feeling',      d:'The world your brand lives in, the words that describe it, and the ones that never do.'},
-    type:        {name:'Name and type',           t:'The typography',   d:'Your name, and the two typefaces that carry it: one for headings, one for long text.'},
-    colour:      {name:'Colour',                  t:'The palette',      d:'The exact colours, how much of each one shows, and how they combine.'},
-    structure:   {name:'Page structure',          t:'The grid',         d:'How the page is ordered: columns, alignment, density and white space.'},
-    architecture:{name:'Page architecture',       t:'The sections',     d:'The kinds of section the page is built from, and the rules for alternating them.'},
-    materials:   {name:'Illustration & materials',t:'The touch',        d:'Whether there is illustration, and whether surfaces feel flat or textured.'},
-    graphics:    {name:'Graphic elements',        t:'The signature',    d:'The shapes, patterns and icons that repeat — they identify you faster than the logo.'},
-    avoid:       {name:'What to avoid',           t:'The no-go list',   d:'What you never want to see. One clear “no” steers better than ten “yes”.'}
-  };
-  var detail = document.getElementById('detail');
-  var btns = [].slice.call(document.querySelectorAll('#tree-list button'));
-  function render(k){
-    var f = FILES[k]; if(!f) return;
-    detail.innerHTML = '<div class="fade"><h4>'+f.t+'</h4>'+
-      '<p class="detail-name"><em>'+f.name+'</em></p>'+
-      '<p class="detail-txt">'+f.d+'</p></div>';
-  }
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){
-      btns.forEach(function(o){o.setAttribute('aria-selected','false')});
-      b.setAttribute('aria-selected','true');
-      render(b.dataset.k);
-    });
-  });
-  render('copy');
 
   /* ---- Dashboard demo: auto-plays a fake fill-through, loops like a gif ---- */
   (function(){
