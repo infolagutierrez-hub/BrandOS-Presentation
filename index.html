@@ -146,7 +146,12 @@ h2 em{color:var(--rojo)}
 .s--beige .node span,.s--white .node span{color:rgba(0,0,0,.5)}
 .node--key b{text-decoration:underline;text-underline-offset:5px}
 .tagline{display:inline-block;font-style:normal;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--blanco);border-radius:999px;padding:4px 11px}
-.node .tagline{color:var(--blanco)}
+.node .tagline{color:var(--blanco);display:inline-block}
+.node .tagline--file{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-style:normal;text-transform:none;letter-spacing:.04em;font-size:11px}
+.node-n{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--blanco);opacity:.6;margin-bottom:6px}
+.s--beige .node-n,.s--white .node-n{color:var(--sombra)}
+.node-files{margin-top:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.75;color:rgba(255,255,255,.78)}
+.s--beige .node-files,.s--white .node-files{color:rgba(0,0,0,.6)}
 
 .stem{height:26px;position:relative}
 .stem::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.4)}
@@ -704,10 +709,67 @@ h2 em{color:var(--rojo)}
   </div>
 </section>
 
-<!-- ============ 09 · LET'S BUILD IT ============ -->
-<section class="s s--beige" data-n="09">
+<!-- ============ 09 · SET UP YOUR FILES ============ -->
+<section class="s s--red" data-n="09">
   <div class="wrap">
-    <div class="num rv"><b>09</b><i></i><b>Let's build it</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <div class="num rv"><b>09</b><i></i><b>Set up your files</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <h2 class="rv">Three things.<br><em>One folder.</em></h2>
+
+    <figure class="diagram rv">
+      <div class="lvl">
+        <div class="node node--key">
+          <i class="node-n">1</i>
+          <b>Website folder</b>
+          <span>the folder of the website itself</span>
+          <span>name it after your website</span><br>
+          <span class="tagline tagline--file">website_____/</span>
+        </div>
+      </div>
+      <div class="fork fork--3"></div>
+      <div class="lvl lvl--3">
+        <div class="node">
+          <i class="node-n">1.1</i>
+          <b>MD file</b>
+          <span>one file &middot; the whole brand</span><br>
+          <span class="tagline tagline--file">brand.md</span>
+          <ul class="node-files">
+            <li>## Core</li>
+            <li>## Character</li>
+            <li>## Audience</li>
+          </ul>
+        </div>
+        <div class="node">
+          <i class="node-n">1.2</i>
+          <b>Logos</b>
+          <span>one file per logo</span><br>
+          <span class="tagline tagline--file">logos/</span>
+          <ul class="node-files">
+            <li>logo-white.png</li>
+            <li>logo-black.png</li>
+            <li>isotype.png</li>
+          </ul>
+        </div>
+        <div class="node">
+          <i class="node-n">1.3</i>
+          <b>Images</b>
+          <span>one file per image</span><br>
+          <span class="tagline tagline--file">images/</span>
+          <ul class="node-files">
+            <li>01-reference.png</li>
+            <li>02-reference.jpg</li>
+            <li>03-reference.png</li>
+          </ul>
+        </div>
+      </div>
+      <figcaption class="dg-cap">Keep them together · the AI reads the whole folder</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 10 · LET'S BUILD IT ============ -->
+<section class="s s--beige" data-n="10">
+  <div class="wrap">
+    <div class="num rv"><b>10</b><i></i><b>Let's build it</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
     <h2 class="rv">Six essential<br><em>decisions</em>.</h2>
 
     <ol class="steps" id="stepsList">
@@ -723,7 +785,7 @@ h2 em{color:var(--rojo)}
       <div class="preview-bar">
         <div class="preview-dots"><i></i><i></i><i></i></div>
         <span class="preview-url">sample walkthrough · auto-playing</span>
-        <a class="preview-open" href="index.html" target="_blank" rel="noopener">Open tool ↗</a>
+        <a class="preview-open" href="https://infolagutierrez-hub.github.io/BrandOS-by-LaGutierrez/" target="_blank" rel="noopener">Open tool ↗</a>
       </div>
       <div class="preview-body">
         <div class="demo" id="demo">
@@ -745,10 +807,10 @@ h2 em{color:var(--rojo)}
   </div>
 </section>
 
-<!-- ============ 10 · THE NEXT STEP ============ -->
-<section class="s s--red" data-n="10">
+<!-- ============ 11 · THE NEXT STEP ============ -->
+<section class="s s--red" data-n="11">
   <div class="wrap">
-    <div class="num rv"><b>10</b><i></i><b>The next step</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
+    <div class="num rv"><b>11</b><i></i><b>The next step</b><img class="num-seal" src="logo-lagutierrez.png" alt="LaGutierrez"></div>
     <h2 class="rv">This is just<br><em>the first layer</em>.</h2>
 
     <ul class="horizon">
@@ -760,7 +822,7 @@ h2 em{color:var(--rojo)}
 </section>
 
 <!-- ============ CLOSE ============ -->
-<section class="s s--white end" data-n="11">
+<section class="s s--white end" data-n="12">
   <div class="wrap">
     <p class="eyebrow rv">LaGutierrez</p>
     <h2 class="rv" style="margin-top:18px">Let's build<br>your <em>Brand OS</em>.</h2>
